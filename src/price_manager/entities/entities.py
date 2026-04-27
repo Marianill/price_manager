@@ -104,16 +104,34 @@ class Proveedor:
 
 
 class Precio:
-    def __init__(self, valor: float, moneda: str, fecha: datetime.date):
+    def __init__(self, id: int, valor: float, moneda: str, fecha: datetime.date):
         """ Constructor
         Args:
+            id (int): El identificador único del precio.
             valor (float): El valor del precio.
             moneda (str): La moneda del precio.
             fecha (datetime.date): La fecha del precio.
         """
+        self.__id:int = id
         self.__valor:float = valor
         self.__moneda:str = moneda
         self.__fecha:datetime.date = fecha
+
+    @property
+    def id(self):
+        """ Getter para el atributo id.
+        Returns:
+            int: El identificador único del precio.
+        """
+        return self.__id
+    
+    @id.setter
+    def id(self, id: int):
+        """ Setter para el atributo id.
+        Args:
+            id (int): El nuevo identificador del precio.
+        """
+        self.__id = id
 
     @property
     def valor(self):
@@ -185,13 +203,14 @@ class Precio:
   
 
 class CotizacionDolar:
-    def __init__(self, tipo: str, valor: float, fecha: datetime.date):
+    def __init__(self, tipo: str, valor: float, fecha: datetime.date, tipo_id: int):
         """ Constructor
         Args:
             tipo (str): El tipo de cotización.
             valor (float): El valor de la cotización.
             fecha (datetime.date): La fecha de la cotización.
         """
+        self.__tipo_id = tipo_id
         self.__tipo:str = tipo
         self.__valor:float = valor
         self.__fecha:datetime.date = fecha
@@ -211,6 +230,22 @@ class CotizacionDolar:
             tipo (str): El nuevo tipo de cotización.
         """
         self.__tipo = tipo
+
+    @property
+    def tipo_id(self):
+        """ Getter para el atributo tipo_id.
+        Returns:
+            int: El identificador único del tipo de cotización.
+        """
+        return self.__tipo_id
+    
+    @tipo_id.setter
+    def tipo_id(self, tipo_id: int):
+        """ Setter para el atributo tipo_id.
+        Args:
+            tipo_id (int): El nuevo identificador del tipo de cotización.
+        """
+        self.__tipo_id = tipo_id
 
     @property
     def valor(self):
